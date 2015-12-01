@@ -18,6 +18,7 @@ var list = {
         }
     },
 
+
     get: function (list, index) {
 
         if (index === 0) {
@@ -60,6 +61,6 @@ var list = {
 };
 
 console.log(list.remove(list, 3));
-console.log(list)
+console.log(list);
 
 
