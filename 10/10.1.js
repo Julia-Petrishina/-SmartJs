@@ -2,6 +2,7 @@ var list = {
 
 
 
+
     create: function(){
         list.value = 1;
         list.next = null;
