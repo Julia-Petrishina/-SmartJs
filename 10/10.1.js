@@ -1,19 +1,25 @@
 var list = {
-    value: 1,
-    next: {
-        value: 2,
-        next: {
-            value: 3,
-            next: {
-                value: 4,
-                next: {
-                    value: 5,
-                    next: null
-                }
-            }
-        }
+
+
+
+    create: function(){
+        list.value = 1;
+        list.next = null;
+
+        return list;
     },
 
+
+
+    add: function(list, v){
+
+        if(list.next === null){
+            list.next = {value: v, next: null};
+        }else{
+            list.add(list.next, v);
+        }
+
+    },
 
     get: function (list, index) {
 
@@ -52,11 +58,48 @@ var list = {
         prevList.next = nextToBeRemovedList;
         return toBeRemovedList;
 
+    },
+
+    search: function(list, value){
+        if(list.value === value){
+            return list;
+        }else if(list.next === null){
+            return null;
+        }else{
+            var way = list.next + '.';
+            return list.search(list.next, value);
+        }
+    },
+
+    isEmpty: function(list){
+
+    },
+
+    insertAt: function(list, value, index){
+
+    },
+
+    toArray: function(list){
+        var array = [];
+        array.push(list.value);
+        if(list.next === null){
+            return array += array;
+        }else{
+            list.toArray(list.next);
+        }
+
+        return Array;
+    },
+
+    size: function(list){
+
     }
 
-};
 
+
+};
+console.log(list.create());
+console.log(list.add(list, 6));
 console.log(list.remove(list, 3));
-console.log(list);
 
 
