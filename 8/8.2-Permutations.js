@@ -40,5 +40,5 @@ window.onload = function() {
 
     }
 
-    console.log(permutations(3));
+  /*  console.log(permutations(3));*/
 };
