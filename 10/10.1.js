@@ -1,8 +1,7 @@
 var list = {
 
 
-
-    create: function(){
+    create: function () {
         list.value = 1;
         list.next = null;
 
@@ -10,12 +9,11 @@ var list = {
     },
 
 
+    add: function (list, v) {
 
-    add: function(list, v){
-
-        if(list.next === null){
+        if (list.next === null) {
             list.next = {value: v, next: null};
-        }else{
+        } else {
             list.add(list.next, v);
         }
 
@@ -49,7 +47,7 @@ var list = {
         var curList = list.next;
 
         var count = 0;
-        while(count < index--){
+        while (count < index--) {
             var prevList = curList;
             curList = curList.next;
             count++;
@@ -60,46 +58,61 @@ var list = {
 
     },
 
-    search: function(list, value){
-        if(list.value === value){
+    search: function (list, value) {
+        if (list.value === value) {
             return list;
-        }else if(list.next === null){
+        } else if (list.next === null) {
             return null;
-        }else{
+        } else {
             var way = list.next + '.';
             return list.search(list.next, value);
         }
     },
 
-    isEmpty: function(list){
-
+    isEmpty: function (list) {
+        if (list.value !== null && list.next !== null) {
+            return false;
+        } else {
+            return true;
+        }
     },
 
-    insertAt: function(list, value, index){
+    insertAt: function (list, v, index) {
 
+        var currList = list.get(list, index);
+
+        var nextList = currList.next;
+        var count = index;
+        while ("???? ?? ????? ?? ????? ??????") {
+            nextList = currList;
+            nextList = currList.next;
+            count++;
+        }
+
+        return list;
     },
 
-    toArray: function(list){
+    toArray: function (list) {
         var array = [];
         array.push(list.value);
-        if(list.next === null){
+        if (list.next === null) {
             return array += array;
-        }else{
+        } else {
             list.toArray(list.next);
         }
 
-        return Array;
+        return array;
     },
 
-    size: function(list){
+    size: function (list) {
+        var counter = 0;
 
     }
 
 
-
 };
-console.log(list.create());
+/*console.log(list.create());
 console.log(list.add(list, 6));
-console.log(list.remove(list, 3));
+console.log(list.remove(list, 3));*/
 
 
