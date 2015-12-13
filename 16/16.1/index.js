@@ -13,8 +13,7 @@ window.onload = function () {
         results: [],
         position: 0,
         currEl: null
-    }
-
+    };
 
     function update() {
         function enableBtn(btn, condition) {
@@ -33,9 +32,6 @@ window.onload = function () {
         enableBtn(prevSiblingBtn, state.currEl.previousElementSibling);
         enableBtn(nextSiblingBtn, state.currEl.nextElementSibling);
 
-
-
-
         var oldEl = body.querySelector('.active');
 
         if(oldEl){
@@ -47,9 +43,8 @@ window.onload = function () {
         state.currEl.style.backgroundColor = 'lightblue';
         state.currEl.style.border = '5px solid red';
         state.currEl.classList.add('active');
-
-
     }
+
 
     function findEl(){
         state.currEl = input.value;
@@ -69,6 +64,7 @@ window.onload = function () {
     nextBtn.addEventListener('click', nextEl, false);
 
 
+
     function prevEl(){
         state.position --;
         state.currEl = state.results[state.position];
@@ -78,18 +74,18 @@ window.onload = function () {
 
 
     function parentEl(){
-
         state.currEl = state.currEl.parentNode;
         update();
     }
     parentBtn.addEventListener('click', parentEl, false);
 
+
     function firstChild(){
         state.currEl = state.currEl.firstElementChild;
-        console.log(state.currEl.firstElementChild);
         update();
     }
     firstChildBtn.addEventListener('click', firstChild, false);
+
 
     function prevSib(){
         state.currEl = state.currEl.previousElementSibling;
@@ -97,13 +93,10 @@ window.onload = function () {
     }
     prevSiblingBtn.addEventListener('click', prevSib, false);
 
+
     function nextSib(){
         state.currEl = state.currEl.nextElementSibling;
-        console.log(state.currEl.nextElementSibling);
-
         update();
     }
     nextSiblingBtn.addEventListener('click', nextSib, false);
-
-
 };
