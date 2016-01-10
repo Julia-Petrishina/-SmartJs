@@ -2,24 +2,38 @@ window.onload = function() {
 
     function search(needle, haystack){
 
-        var queue = [haystack];
+        var queue = [{
+            object: haystack,
+            path: ''
+        }];
 
-        var currentObject;
+        var currentQueueItem;
 
-        while(currentObject = queue.shift()){
+        while(currentQueueItem = queue.shift()){
+            var currentPath = currentQueueItem.path;
+            var currentObject = currentQueueItem.object;
             for (var i in currentObject){
                 if(needle === currentObject[i]){
-                    return true;
+                    return currentPath.slice(1) + '.' + i;
                 };
                 if(typeof currentObject[i] === "object"){
-                    queue.push(currentObject[i]);
+                    var newPath;
+                    if(Array.isArray(currentObject)){
+                        newPath = currentPath + '[' + i + ']'
+                    }
+                    else{
+                        newPath = currentPath + '.' + i;
+                    }
+                    queue.push({
+                        object: currentObject[i],
+                        path: newPath
+                    });
                 };
             }
         }
 
         return false;
-
     }
 
-    console.log(search(6, {a: [1, 2, {s: 4, c: {u: 5}}], s: 9}));
+    console.log(search(4, {a: [1, 2, {s: 4, c: {u: 5}}], s: 9}));
 };
