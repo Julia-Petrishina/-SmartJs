@@ -1,0 +1,17 @@
+<!--<footer class="footer rounded-6">
+	<nav class="footer-links">
+		{% if portal.tabs.size > 0 %}
+				{% for tab in portal.tabs %}
+					<a href="{{tab.url}}" class="{% if tab.tab_type == current_tab %}active{% endif %}">{{ tab.label }}</a>
+				{% endfor %}
+		{% endif %}
+		{{ portal | link_to_privacy_policy }}
+		{{ portal | link_to_cookie_law }}
+	</nav>
+</footer>
+{{ portal | portal_copyright }}-->
+
+<div class="copyright">&copy;2016
+    <a href="http://www.teamdev.com" target="_blank">TeamDev Ltd.</a>
+    All rights reserved.
+</div>

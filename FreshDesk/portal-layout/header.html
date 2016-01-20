@@ -1,0 +1,154 @@
+<script>
+    jQuery(document).ready(function(){
+
+        jQuery(".user-ava").click(function(){
+            jQuery(this).toggleClass("profile_active");
+
+        });
+
+        if(window.location.href == 'https://teamdev.freshdesk.com/support/home' || window.location.href == 'http://jxbrowser.support.teamdev.com/support/home'){
+            jQuery('.banner').addClass('home-page-banner');
+        }
+
+    });
+</script>
+
+{% if portal.has_user_signed_in == true %}
+{% if portal.current_page == 'profile_edit' %}
+<script>
+    jQuery(document).ready(function() {
+        jQuery('.main, .sidebar').wrapAll('<div class="edit-profile-page content-holder equal-height center-holder">');
+        jQuery('.sidebar').addClass('edit-profile-page-sidebar');
+        jQuery('.alert-notice').addClass('been-updated');
+
+    });
+</script>
+{% endif %}
+{% endif %}
+
+<header class="banner">
+    <div class="banner-wrapper center-holder">
+        <div class="banner-title">
+            {{ portal | logo }}
+            <h1 class="ellipsis heading"><a href="https://www.teamdev.com/jxbrowser" target="_blanck">{{ portal.name }}</a></h1>
+        </div>
+        <!--{{ portal | welcome_navigation }}-->
+
+        <a data-toggle-dom="#header-tabs" href="#" data-animated="true" class="mobile-icon-nav-menu show-in-mobile">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </a>
+        <nav class="banner-nav mobileLogin">
+
+            <ul class="nav-link" id="header-tabs">
+                {% if portal.has_user_signed_in == true %}
+
+                <li><a href="{{ portal.home_url }}">Home</a></li>
+                <li> <a href="/support/solutions/9000050171">Getting Started</a></li>
+                <li><a href="{{ portal.solutions_home_url }}">Knowledge Base</a></li>
+                <li><a href="/support/discussions/forums/9000110576">Release Notes</a></li>
+                <li>
+                    <a href="/support/tickets/new" class="submit-link">
+                        <i class="icon tickets-new"></i>
+                        Submit new ticket
+                    </a>
+                </li>
+                <!--  <li><a href="{{ portal.profile_url }}">Edit Profile</a></li>            -->
+                <!--     <li class="btn-item"><a class="btn btn-log" href="{{ portal.logout_url }}">Sign out</a></li>-->
+
+                <li class="list-user-abilities">
+                    <a data-toggle-dom="#logged" href="#" data-animated="true" class="user-ava"> <span class="display-on-mobile">My Profile</span>
+                        <!--  <img src="{{ current_user.profile_url }}" alt="User">-->
+                        <img src="{% if current_user.profile_url != false %}{{ current_user.profile_url }}{% else %}https://dl.dropbox.com/s/qua65fv1hrpc0aq/1453221992_Customers.png{% endif %}" alt="User">
+                        <i class="icon drop-arrow"></i>
+                    </a>
+
+
+                    <ul id="logged" class="second-level list-block dropdown">
+                        <li>
+                            <!--<i class="icon tickets"></i>-->
+                            <a href="{{ portal.tickets_home_url }}">My tickets</a>
+                        </li>
+                        <li>
+                            <!--<i class="icon profile"></i>-->
+                            <a href="{{ portal.profile_url }}">Profile</a>
+                        </li>
+                        <li>
+                            <!--<i class="icon sign-out"></i>-->
+                            <a href="{{ portal.logout_url }}">Sign out</a>
+                        </li>
+                    </ul>
+                </li>
+
+                {% else %}
+                <li><a href="{{ portal.home_url }}">Home</a></li>
+                <li> <a href="/support/solutions/9000050171">Getting Started</a></li>
+                <li><a href="{{ portal.solutions_home_url }}">Knowledge Base</a></li>
+                <li><a href="/support/discussions/forums/9000110576">Release Notes</a></li>
+                <li class="btn-item"><a class="btn btn-log" href="{{ portal.login_url }}">Sign in</a></li>
+                {% endif %}
+            </ul>
+
+
+        </nav>
+
+    </div>
+
+    <!-- Search and page links for the page -->
+    {% if portal.current_tab %}
+    <section class="help-center rounded-6">
+        <div class="hc-search">
+            <div class="hc-search-c">
+                <!-- <h2 class="heading hide-in-mobile">{% translate header.help_center %}</h2> -->
+
+                <h2 class="heading hide-in-mobile"> Welcome to JxBrowser Help Center</h2>
+                {% snippet search_form %}
+            </div>
+        </div>
+        <!--<div class="hc-nav {% if portal.contact_info %} nav-with-contact {% endif %}">
+    {{ portal | helpcenter_navigation }}
+    </div>-->
+    </section>
+    {% endif %}
+</header>
+
+<!--
+<nav class="page-tabs" >
+{% if portal.tabs.size > 0 %}
+<a data-toggle-dom="#header-tabs" href="#" data-animated="true" class="mobile-icon-nav-menu show-in-mobile"></a>
+<div class="nav-link" id="header-tabs">
+{% for tab in portal.tabs %}
+{% if tab.url %}
+<a href="{{tab.url}}" class="{% if tab.tab_type == portal.current_tab %}{% if  topic.id != forum topic id goes here %}active{% endif %}{% endif %}">
+{{ tab.label }}
+</a>
+{% endif %}
+{% endfor %}
+</div>
+{% endif %}
+</nav>
+
+-->
+
+<script>
+    jQuery(document).ready(function() {
+
+        //Please change the text "Please enter your search team" to change the text.
+        jQuery('[rel="page-search"]').attr('placeholder','Search');
+
+        var tab_urls = [];
+        jQuery('#header-tabs li a').each(function() {
+            tab_urls.push(jQuery(this).attr('href'));
+        });
+
+        if (jQuery.inArray(window.location.pathname,tab_urls) != -1) {
+            console.log('true');
+            jQuery('#header-tabs li a[href="'+tab_urls[jQuery.inArray(window.location.pathname,tab_urls)]+'"]').css('background-color','white').css('color','black');
+        }
+        else {
+            console.log('false');
+            jQuery('#header-tabs li a[href="'+tab_urls[jQuery.inArray(window.location.pathname,tab_urls)]+'"]').css('background-color','black').css('color','white');
+        }
+    });
+</script>

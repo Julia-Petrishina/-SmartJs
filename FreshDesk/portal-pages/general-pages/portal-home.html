@@ -1,0 +1,147 @@
+{% if portal.has_solutions %}
+<section class="page-portal-home">
+    <section>
+        <div class="panels-holder equal-height center-holder">
+            <div class="col-4">
+                <div class="panel-content">
+                    <i class="icon icon-getting-started"></i>
+
+                    <div class="panel-body">
+                        <h3 class="panel-title">
+                            <a href="solutions/9000050171">Getting Started</a>
+                        </h3>
+
+                        <div class="panel-description">
+                            <p>Check our Quick Start Guides to see how to use
+                                JxBrowser in your favourite IDE</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-4">
+                <div class="panel-content">
+                    <i class="icon icon-knowledge-base"></i>
+
+                    <div class="panel-body">
+                        <h3 class="panel-title">
+                            <a href="{{ portal.solutions_home_url }}">Knowledge Base</a>
+                        </h3>
+
+                        <div class="panel-description">
+                            <p>Search articles, guides and tutorials on different
+                                aspects of using JxBrowser functionality</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-4">
+                <div class="panel-content">
+                    <i class="icon icon-ask-community"></i>
+
+                    <div class="panel-body">
+                        <h3 class="panel-title">
+                            <a href="http://stackoverflow.com/questions/tagged/jxbrowser" target="_blank">Ask Community</a>
+                        </h3>
+
+                        <div class="panel-description">
+                            <p>Check Stack Overflow community forum to see
+                                how other developers solved similar issues
+                                or post your own question using #jxbrowser tag.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-4">
+                <div class="panel-content">
+                    <i class="icon icon-contact-us"></i>
+
+                    <div class="panel-body">
+                        <h3 class="panel-title">
+                            <a href="/support/tickets/new">Submit a Ticket</a>
+                        </h3>
+
+                        <div class="panel-description">
+                            <p>Didn't find answer to your question?
+                                Feel free to submit request to our support team within your support
+                                subscription period.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="content-holder equal-height center-holder">
+        <section class="main content rounded-6 min-height-on-desktop" id="solutions-index-home">
+
+            <!--<h2 class="heading">{% translate portal.knowledge_base %}</h2>-->
+            <h2 class="heading">New in Knowledge Base</h2>
+
+            <div class="cs-s">
+                <!--<h3 class="heading">{{ category.name | link_to: category.url }}</h3>-->
+
+                <div class="cs-g-c">
+                    <ul>
+                        {% for article in portal.recent_articles limit: 5 %}
+
+                        <li>
+                            <a href="{{ article.url }}">{{ article.title }}</a>
+                            <div class="help-text">{{ article.category.name }} / {{ article.folder.name }}</div>
+                        </li>
+
+                        {% else %}
+                        {{ portal | filler_for_solutions }}
+                        {% endfor %}
+                    </ul>
+                    <!--{% for folder in category.folders %}
+                        <section class="cs-g article-list">
+                            <div class="list-lead">
+                                {{ folder | link_to_folder_with_count }}
+                            </div>
+                            {{ folder | article_list:5 }}
+
+                        </section>
+                    {% else %}
+                        {{ portal | filler_for_solutions }}
+                    {% endfor %}-->
+                </div>
+            </div>
+
+        </section>
+        {% endif %}
+
+        {% if portal.has_forums %}
+        <section class="sidebar content community-sidebar rounded-6 min-height-on-desktop" id="home-community-sidebar">
+            <!--<h2 class="heading">{% translate portal.community_forums %}</h2>-->
+            <h2 class="heading">Recent Releases</h2>
+
+            {% if portal.topics_count > 0 %}
+            <!--<p class="intro">{% translate portal.showing_recent_updates %}</p>-->
+            <div>{{ portal | link_to_start_topic }}</div>
+            {% for category in portal.forum_categories %}
+            {% if category.forums_count > 0 %}
+            <div class="cs-s">
+                <!--	<h3 class="heading">{{ category.name | link_to: category.url }}</h3>-->
+                <div class="cs-g-c">
+                    {% for forum in category.forums %}
+                    <section class="cs-g topic-list">
+                        <!--	<div class="list-lead badge-{{ forum.type_name }}">
+                                {{ forum | link_to_forum_with_count }}
+                            </div>-->
+                        {{ forum | topic_list:5 }}
+                    </section>
+                    {% endfor %}
+                </div>
+            </div>
+            {% endif %}
+            {% endfor %}
+            {% else %}
+            {{ portal | filler_for_forums }}
+            {% endif %}
+        </section>
+        {% endif %}
+    </section>
+</section>
+
