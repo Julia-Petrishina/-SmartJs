@@ -7,7 +7,6 @@ var list = {
         return list;
     },
 
-
     add: function (list, v) {
 
         if (list.next === null) {
@@ -110,8 +109,8 @@ var list = {
 
 
 };
-/*console.log(list.create());
+console.log(list.create());
 console.log(list.add(list, 6));
-console.log(list.remove(list, 3));*/
+console.log(list.remove(list, 3));
 
 

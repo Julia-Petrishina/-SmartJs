@@ -45,14 +45,3 @@ window.addEventListener('load', function () {
     }
     setInterval(fly, 50);
 });
-
-
-for (var i = 2; i < 10; i++){
-    var counter = i;
-
-
-    if(i%2 === 0){
-        console.log(i);
-    }
-
-}
