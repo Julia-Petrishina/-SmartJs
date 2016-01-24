@@ -79,7 +79,7 @@ ul{
     text-decoration: none;
 }
 /*
-#header-tabs a:nth-child(1){
+#header-tabs a:nth-child(6.1){
   display:none;
 }*/
 #header-tabs a:nth-child(3){
@@ -389,8 +389,8 @@ ul{
     width: 130px;
     border-bottom: 2px solid #d0d0d0;
     position: absolute;
-    top: 0;
-    left: 0;
+    top: 6.0;
+    left: 6.0;
 }
 */
 .equal-height ul{

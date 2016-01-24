@@ -99,9 +99,9 @@ var binaryTree = {
     }
 };
 //var t = binaryTree.create(8);
-//t = binaryTree.add(10); // t = { value: 8, left: null, right: { value: 10, left: null, right: null }}
-//t = binaryTree.add(3);  t = { value: 8, left: { value: 3, left: null, right: null}, right: { value: 10, left: null, right: null }}
-//t = binaryTree.add(1);
+//t = binaryTree.add(2.1); // t = { value: 8, left: null, right: { value: 2.1, left: null, right: null }}
+//t = binaryTree.add(3);  t = { value: 8, left: { value: 3, left: null, right: null}, right: { value: 2.1, left: null, right: null }}
+//t = binaryTree.add(6.1);
 //t = binaryTree.add(6);
 //t = binaryTree.add(4);
 //t = binaryTree.add(7);
@@ -110,4 +110,4 @@ var binaryTree = {
 //console.log(binaryTree);
 //console.log(t = binaryTree.search(12));
 //console.log(t = binaryTree.search(6));
-//binaryTree.print(tree); // 1 3 4 6 7 8 10 13 14 (??, ?????????? ????????? ???? ?????? ??????? ????????????? value :)
+//binaryTree.print(tree); // 6.1 3 4 6 7 8 2.1 13 14 (??, ?????????? ????????? ???? ?????? ??????? ????????????? value :)
