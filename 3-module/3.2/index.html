@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        #test2 {
+            width: 300px;
+            height: 300px;
+            background-color: lightblue;
+            position: relative;
+            overflow: hidden;
+        }
+
+        #test {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 40px;
+            height: 40px;
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+<div id="test2">
+    <div id="test"></div>
+</div>
+<script>
+    //getComputedStyle
+    window.addEventListener('load', function () {
+
+        var test = document.querySelector('#test');
+        var test2 = document.querySelector('#test2');
+
+
+        function makeMovable(element) {
+
+            var dx = event.x - element.dataset.x;
+            var dy = event.y - element.dataset.y;
+
+            var left = element.offsetLeft;
+            var top = element.offsetTop;
+            var right = left + element.offsetWidth;
+            var bottom = top + element.offsetHeight;
+
+            if (right > element.offsetWidth) {
+                element.style.left = (element.offsetWidth - element.offsetWidth) + 'px';
+                dx = -dx;
+            }
+
+            if (bottom > element.offsetHeight) {
+                element.style.top = (element.offsetHeight - element.offsetHeight) + 'px';
+                dy = -dy;
+            }
+
+            if (left < 0) {
+                element.style.left = '0px';
+                dx = -dx;
+            }
+
+            if (top < 0) {
+                element.style.top = '0px';
+                dy = -dy;
+            }
+
+        }
+
+        console.log(makeMovable(test))
+
+        function makeMovable2(element) {
+        }
+    });
+    (function () {
+        var myDiv = document.querySelector("#test");
+        var movingElement;
+        document.addEventListener('mousedown', function (event) {
+            movingElement = event.target;
+            movingElement.dataset.x = event.x;
+            console.log(movingElement.dataset.x)
+            movingElement.dataset.y = event.y;
+        });
+        document.addEventListener('mousemove', function (event) {
+            if (movingElement) {
+                var deltaX = event.x - movingElement.dataset.x;
+                var deltaY = event.y - movingElement.dataset.y;
+                movingElement.style.left = (parseInt(movingElement.style.left || 0, 10) + deltaX) + 'px';
+                movingElement.style.top = (parseInt(movingElement.style.top || 0, 10) + deltaY) + 'px';
+                movingElement.dataset.x = event.x;
+                movingElement.dataset.y = event.y;
+            }
+        })
+        document.addEventListener('mouseup', function (event) {
+            if (movingElement) {
+                delete movingElement.dataset.x;
+                delete movingElement.dataset.y;
+                movingElement = null;
+            }
+        })
+    })();
+
+</script>
+</body>
+</html>
