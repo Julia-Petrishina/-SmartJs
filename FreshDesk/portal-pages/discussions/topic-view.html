@@ -1,6 +1,6 @@
 {% assign forum = topic.forum %}
 {% assign forum_category = forum.forum_category %}
-<section class="content-holder equal-height center-holder">
+<section class="content-holder equal-height center-holder topic-view">
     <section class="content main rounded-6 min-height-on-desktop">
         {% if forum.type_name != 'announcement' %}
         <b class="pull-right">{{ portal | link_to_start_topic }}</b>
@@ -127,32 +127,66 @@
     </section>
     {% if forum.topics_display_count > 1 or topic.locked? or topic.has_merged_topics? %}
     <section class="sidebar content rounded-6 min-height-on-desktop">
+
+
         <div class="cs-g-c">
             <section class="topic-list" id="merged-topics-list">
 
-                {% if topic.locked? %}
-
-                <div class="lock-merge-topic-text">
-                    {% translate portal.topic.comments_closed %}
-                    {% if topic.merged? %}
-                    {% translate portal.topic.merge_continue %}
-                    {{ topic | link_to_merged_topic }}
-                    {% endif %}
+                <div class="list-lead">
+                    More topics in
+                    <span class="folder-name">Release Notes</span>
                 </div>
 
-                {% if topic.has_merged_topics? or forum.topics_display_count > 1 %}
-                <hr class="content-divider">
+                {% if portal.topics_count > 0 %}
+                <!--<p class="intro">{% translate portal.showing_recent_updates %}</p>-->
+                <div>{{ portal | link_to_start_topic }}</div>
+                {% for category in portal.forum_categories %}
+                {% if category.forums_count > 0 %}
+                <div class="cs-s">
+                    <!--	<h3 class="heading">{{ category.name | link_to: category.url }}</h3>-->
+                    <div class="cs-g-c">
+                        {% for forum in category.forums %}
+                        <section class="cs-g topic-list">
+                            <!--	<div class="list-lead badge-{{ forum.type_name }}">
+                                    {{ forum | link_to_forum_with_count }}
+                                </div>-->
+                            {{ forum | topic_list:5 }}
+                        </section>
+                        {% endfor %}
+                    </div>
+                </div>
                 {% endif %}
-
+                {% endfor %}
+                {% else %}
+                {{ portal | filler_for_forums }}
                 {% endif %}
+                <!--
 
-                {{ topic | merged_topics }}
+                  {% if topic.locked? %}
 
-                {% if forum.topics_display_count > 1 and topic.has_merged_topics? %}
-                <hr class="content-divider">
-                {% endif %}
+                      <div class="lock-merge-topic-text">
+                          {% translate portal.topic.comments_closed %}
+                          {% if topic.merged? %}
+                              {% translate portal.topic.merge_continue %}
+                              {{ topic | link_to_merged_topic }}
+                          {% endif %}
+                      </div>
 
-                {{ topic | more_topics_list }}
+                      {% if topic.has_merged_topics? or forum.topics_display_count > 1 %}
+                          <hr class="content-divider">
+                      {% endif %}
+
+                  {% endif %}
+
+                  {{ topic | merged_topics }}
+
+                  {% if forum.topics_display_count > 1 and topic.has_merged_topics? %}
+                          <hr class="content-divider">
+                  {% endif %}
+
+                  {{ topic | more_topics_list }}
+
+  -->
             </section>
         </div>
     </section>

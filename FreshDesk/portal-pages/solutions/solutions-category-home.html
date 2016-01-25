@@ -4,7 +4,7 @@
             <a href="{{ portal.solutions_home_url }}">{% translate portal.solutions_home %}</a>
         </div>
         <h2 class="heading">{{ category.name | h}}</h2>
-        <div class="cs-g-c">
+        <div class="cs-g-c column-grid">
             {% for folder in category.folders %}
             {% if folder.articles_count > 0 %}
             <section class="cs-g article-list">
@@ -12,7 +12,7 @@
                     {{ folder | link_to_folder_with_count }}
                 </div>
                 <ul>
-                    {% for article in folder.articles limit:5 %}
+                    {% for article in folder.articles limit:1000 %}
                     <li>
                         <div class="ellipsis">
                             <a href="{{article.url}}" title="{{article.title | h}}">{{article.title |h}}</a>
@@ -20,7 +20,7 @@
                     </li>
                     {% endfor %}
                 </ul>
-                {% if folder.articles.size > 5 %}
+                {% if folder.articles.size > 1000 %}
                 {{ folder | link_to_see_all_articles }}
                 {% endif %}
             </section>

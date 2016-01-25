@@ -6,9 +6,12 @@
 
         });
 
+        jQuery("#notice:contains('You must be logged out to access this page')").css('display', 'none');
+
         if(window.location.href == 'https://teamdev.freshdesk.com/support/home' || window.location.href == 'http://jxbrowser.support.teamdev.com/support/home'){
             jQuery('.banner').addClass('home-page-banner');
         }
+
 
     });
 </script>
@@ -44,7 +47,7 @@
             <ul class="nav-link" id="header-tabs">
                 {% if portal.has_user_signed_in == true %}
 
-                <li><a href="{{ portal.home_url }}">Home</a></li>
+                <li><a href="{{ portal.home_url }}" class="active">Home</a></li>
                 <li> <a href="/support/solutions/9000050171">Getting Started</a></li>
                 <li><a href="{{ portal.solutions_home_url }}">Knowledge Base</a></li>
                 <li><a href="/support/discussions/forums/9000110576">Release Notes</a></li>
@@ -135,7 +138,7 @@
     jQuery(document).ready(function() {
 
         //Please change the text "Please enter your search team" to change the text.
-        jQuery('[rel="page-search"]').attr('placeholder','Search');
+        jQuery('[rel="page-search"]').attr('placeholder','Search articles, guides, tutorials...');
 
         var tab_urls = [];
         jQuery('#header-tabs li a').each(function() {
@@ -144,11 +147,13 @@
 
         if (jQuery.inArray(window.location.pathname,tab_urls) != -1) {
             console.log('true');
-            jQuery('#header-tabs li a[href="'+tab_urls[jQuery.inArray(window.location.pathname,tab_urls)]+'"]').css('background-color','white').css('color','black');
+            jQuery('#header-tabs li a[href="'+tab_urls[jQuery.inArray(window.location.pathname,tab_urls)]+'"]').addClass('active');
         }
         else {
             console.log('false');
-            jQuery('#header-tabs li a[href="'+tab_urls[jQuery.inArray(window.location.pathname,tab_urls)]+'"]').css('background-color','black').css('color','white');
+            jQuery('#header-tabs li a[href="'+tab_urls[jQuery.inArray(window.location.pathname,tab_urls)]+'"]').removeClass('active');
         }
+
     });
+
 </script>
