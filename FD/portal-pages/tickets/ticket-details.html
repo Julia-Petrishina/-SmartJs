@@ -1,5 +1,5 @@
 <section class="content-holder equal-height center-holder ticket-details-page">
-    <section class="main content rounded-6 min-height-on-desktop">
+    <section class="main content rounded-6 min-height-on-desktop clearfix">
         <div class="breadcrumb">
             <a href="{{ portal.home_url }}">{% translate header.tabs.home %}</a>
             <a href="{{ portal.tickets_home_url }}">{% translate portal.tickets.ticket_list %}</a>
@@ -112,7 +112,7 @@
         </section>
     </section>
 
-    <section class="sidebar content rounded-6" id="ticket-sidebar">
+    <section class="sidebar content rounded-6 clearfix" id="ticket-sidebar">
         {% assign agent = ticket.agent %}
         {% if agent_visible == true and agent %}
         <div class="widget agent-details">

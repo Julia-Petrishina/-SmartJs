@@ -7,9 +7,12 @@
         });
 
         jQuery("#notice:contains('You must be logged out to access this page')").css('display', 'none');
+        jQuery("#notice:contains('No user was found with that email address')").css('top', '-165px');
+
 
         if(window.location.href == 'https://teamdev.freshdesk.com/support/home' || window.location.href == 'http://jxbrowser.support.teamdev.com/support/home'){
             jQuery('.banner').addClass('home-page-banner');
+            jQuery('#notice').addClass('home-notice');
         }
 
 
@@ -23,7 +26,7 @@
         jQuery('.main, .sidebar').wrapAll('<div class="edit-profile-page content-holder equal-height center-holder">');
         jQuery('.sidebar').addClass('edit-profile-page-sidebar');
         jQuery('.alert-notice').addClass('been-updated');
-
+        jQuery('.control-group.email .disabled-field').addClass('ellipsis');
     });
 </script>
 {% endif %}
@@ -47,7 +50,7 @@
             <ul class="nav-link" id="header-tabs">
                 {% if portal.has_user_signed_in == true %}
 
-                <li><a href="{{ portal.home_url }}" class="active">Home</a></li>
+                <li><a href="{{ portal.home_url }}">Home</a></li>
                 <li> <a href="/support/solutions/9000050171">Getting Started</a></li>
                 <li><a href="{{ portal.solutions_home_url }}">Knowledge Base</a></li>
                 <li><a href="/support/discussions/forums/9000110576">Release Notes</a></li>
@@ -63,6 +66,7 @@
                 <li class="list-user-abilities">
                     <a data-toggle-dom="#logged" href="#" data-animated="true" class="user-ava"> <span class="display-on-mobile">My Profile</span>
                         <!--  <img src="{{ current_user.profile_url }}" alt="User">-->
+                        <p class='blank-profile'><span>{{ portal.user.name | first }}</span></p>
                         <img src="{% if current_user.profile_url != false %}{{ current_user.profile_url }}{% else %}https://dl.dropbox.com/s/qua65fv1hrpc0aq/1453221992_Customers.png{% endif %}" alt="User">
                         <i class="icon drop-arrow"></i>
                     </a>

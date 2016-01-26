@@ -450,6 +450,22 @@ h1, h2, h3, h4, h5, h6 {
     height: 32px;
 }
 
+.banner-nav .no-ava{
+    width: 32px;
+    height: 32px;
+    background: url('https://dl.dropbox.com/s/az98jzlzuc3u437/blur-bg.jpg') no-repeat center/100% 100%;
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+    margin: 0;
+}
+
+.banner-nav .no-ava span{
+    padding: 3px;
+    text-align: center;
+    display: inline-block;
+}
+
 .banner-nav .user-ava .icon.drop-arrow {
     width: 11px;
     height: 7px;
@@ -489,6 +505,10 @@ h1, h2, h3, h4, h5, h6 {
     font-size: 14px;
     text-transform: capitalize;
     padding: 0 0 0 24px;
+}
+
+.banner-nav .list-user-abilities .list-block li a.active{
+    background-color: transparent;
 }
 
 .banner-nav .list-user-abilities .list-block li a:hover {
@@ -2042,7 +2062,9 @@ input:-ms-input-placeholder {
         display: inline-block;
     }
 
-    .banner-nav .user-ava img {
+    .banner-nav .user-ava img,
+    .banner-nav .no-ava,
+    .banner-nav .no-ava span{
         display: none;
     }
 
@@ -2050,7 +2072,6 @@ input:-ms-input-placeholder {
         top: 19px;
         left: auto;
         right: -2px;
-
     }
 
     .show-in-mobile.mobile-icon-nav-menu {

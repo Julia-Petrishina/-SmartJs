@@ -1,7 +1,7 @@
 {% assign forum = topic.forum %}
 {% assign forum_category = forum.forum_category %}
 <section class="content-holder equal-height center-holder topic-view">
-    <section class="content main rounded-6 min-height-on-desktop">
+    <section class="content main clearfix rounded-6 min-height-on-desktop">
         {% if forum.type_name != 'announcement' %}
         <b class="pull-right">{{ portal | link_to_start_topic }}</b>
         {% endif %}
@@ -126,7 +126,7 @@
         {% endif %}
     </section>
     {% if forum.topics_display_count > 1 or topic.locked? or topic.has_merged_topics? %}
-    <section class="sidebar content rounded-6 min-height-on-desktop">
+    <section class="sidebar clearfix content rounded-6 min-height-on-desktop">
 
 
         <div class="cs-g-c">
@@ -150,7 +150,7 @@
                             <!--	<div class="list-lead badge-{{ forum.type_name }}">
                                     {{ forum | link_to_forum_with_count }}
                                 </div>-->
-                            {{ forum | topic_list:5 }}
+                            {{ forum | topic_list:10 }}
                         </section>
                         {% endfor %}
                     </div>

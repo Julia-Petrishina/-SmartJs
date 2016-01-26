@@ -8,9 +8,9 @@
 </script>
 
 <section class="content-holder equal-height center-holder">
-    <section class="main content rounded-6 min-height-on-desktop" id="article-show-{{ article.id }}">
+    <section class="main content rounded-6 min-height-on-desktop clearfix" id="article-show-{{ article.id }}">
         <div class="breadcrumb">
-            <a href="{{ portal.solutions_home_url }}"> {% translate portal.solutions_home %} </a>
+            <a href="{{ portal.solutions_home_url }}"> {% translate portal.knowledge_base %} </a>
             <a href="{{ article.category.url }}">{{ article.category.name | h}}</a>
             <a href="{{ article.folder.url }}">{{ article.folder.name | h}}</a>
         </div>
@@ -42,7 +42,7 @@
         {{article | article_voting }}
 
     </section>
-    <section class="sidebar content rounded-6">
+    <section class="sidebar content clearfix rounded-6">
         {{ article | related_articles: 10, 'related_articles' }}
     </section>
 </section>

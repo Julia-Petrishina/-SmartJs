@@ -1,7 +1,7 @@
 <section class="center-holder one-column">
-    <section class="main content rounded-6 min-height-on-desktop" id="folder-show-{{folder.id}}">
+    <section class="main content clearfix rounded-6 min-height-on-desktop" id="folder-show-{{folder.id}}">
         <div class="breadcrumb">
-            <a href="{{ portal.solutions_home_url }}"> {% translate portal.solutions_home %} </a>
+            <a href="{{ portal.solutions_home_url }}"> {% translate portal.knowledge_base %} </a>
             <a href="{{ folder.category.url }}">{{ folder.category.name | h}}</a>
         </div>
         <h2 class="heading">{{ folder.name | h }}</h2>
