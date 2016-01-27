@@ -18,7 +18,7 @@ window.onload = function () {
                     var currentName = currentObject.name;
                     var currentEmail = currentObject.email;
 
-                    console.log('hgfff')
+                    console.log('hgfffhh')
                     var list = document.querySelector('.list');
                     var link = document.createElement('a');
 
