@@ -17,7 +17,6 @@ window.onload = function () {
                     var currentObject = object[i];
                     var currentName = currentObject.name;
                     var currentEmail = currentObject.email;
-                    console.log('diff');
 
                     var list = document.querySelector('.list');
                     var link = document.createElement('a');
