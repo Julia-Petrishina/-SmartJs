@@ -24,11 +24,14 @@ window.addEventListener('load', function () {
 
         if (right > container.offsetWidth) {
             flyer.style.left = (container.offsetWidth - flyer.offsetWidth) + 'px';
+            console.log(container.offsetWidth - flyer.offsetWidth)
             dx = -dx;
+            console.log(dx)
         }
 
         if (bottom > container.offsetHeight) {
             flyer.style.top = (container.offsetHeight - flyer.offsetHeight) + 'px';
+            console.log(container.offsetHeight - flyer.offsetHeight)
             dy = -dy;
         }
 

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <script src="index.js"></script>
     <style>
         #test2 {
             width: 300px;
@@ -9,11 +10,10 @@
             position: relative;
             overflow: hidden;
         }
-
         #test {
             position: absolute;
-            top: 0;
-            left: 0;
+            top: 10px;
+            left: 10px;
             width: 40px;
             height: 40px;
             background-color: red;
@@ -24,58 +24,18 @@
 <div id="test2">
     <div id="test"></div>
 </div>
-<script>
+<!--<script>
     //getComputedStyle
-    window.addEventListener('load', function () {
-
-        var test = document.querySelector('#test');
-        var test2 = document.querySelector('#test2');
-
-
-        function makeMovable(element) {
-
-            var dx = event.x - element.dataset.x;
-            var dy = event.y - element.dataset.y;
-
-            var left = element.offsetLeft;
-            var top = element.offsetTop;
-            var right = left + element.offsetWidth;
-            var bottom = top + element.offsetHeight;
-
-            if (right > element.offsetWidth) {
-                element.style.left = (element.offsetWidth - element.offsetWidth) + 'px';
-                dx = -dx;
-            }
-
-            if (bottom > element.offsetHeight) {
-                element.style.top = (element.offsetHeight - element.offsetHeight) + 'px';
-                dy = -dy;
-            }
-
-            if (left < 0) {
-                element.style.left = '0px';
-                dx = -dx;
-            }
-
-            if (top < 0) {
-                element.style.top = '0px';
-                dy = -dy;
-            }
-
-        }
-
-        console.log(makeMovable(test))
-
-        function makeMovable2(element) {
-        }
-    });
-    (function () {
+    function makeMovable(element) {
+    }
+    function makeMovable2(element) {
+    }
+    (function() {
         var myDiv = document.querySelector("#test");
         var movingElement;
-        document.addEventListener('mousedown', function (event) {
+        document.addEventListener('mousedown', function(event) {
             movingElement = event.target;
             movingElement.dataset.x = event.x;
-            console.log(movingElement.dataset.x)
             movingElement.dataset.y = event.y;
         });
         document.addEventListener('mousemove', function (event) {
@@ -96,7 +56,6 @@
             }
         })
     })();
-
-</script>
+</script>-->
 </body>
 </html>

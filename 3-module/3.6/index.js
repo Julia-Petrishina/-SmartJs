@@ -34,11 +34,10 @@ window.onload = function () {
         }
     };
 
+    var btn = document.querySelector('.btn');
+    btn.addEventListener('click', doSmth, true);
+
     return doSmth();
 
-    var btn = document.querySelector('.btn');
-    btn.addEventListener('click', function(){
-        console.log('ytwreyef')
-    }, true);
 
 };
