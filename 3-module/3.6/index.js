@@ -18,6 +18,7 @@ window.onload = function () {
                     var currentName = currentObject.name;
                     var currentEmail = currentObject.email;
 
+                    console.log('hgffh')
                     var list = document.querySelector('.list');
                     var link = document.createElement('a');
 
@@ -33,11 +34,10 @@ window.onload = function () {
         }
     };
 
+    var btn = document.querySelector('.btn');
+    btn.addEventListener('click', doSmth, true);
+
     return doSmth();
 
-    var btn = document.querySelector('.btn');
-    btn.addEventListener('click', function(){
-        console.log('ytwreyef')
-    }, true);
 
 };
