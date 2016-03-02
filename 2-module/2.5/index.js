@@ -79,3 +79,7 @@ function dejstra(edjes, start, end) {
 }
 
 console.log(dejstra(graph, 1, 4))
+console.log(dejstra(graph, 1, 5));
+//[1, 3, 4]
+
+//[1, 3, 6, 5]
